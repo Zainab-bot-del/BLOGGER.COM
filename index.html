@@ -1,83 +1,664 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Zainab Tehreem | Justicewali</title>
-  <style>
-    body {
-      background-color: #ffc8dd;
-      font-family: Arial, sans-serif;
-      color: #222;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
-    h1 {
-      color: #000;
-      text-align: center;
-    }
-    h2 {
-      color: #444;
-      border-bottom: 2px solid #fff;
-      padding-bottom: 5px;
-    }
-    .section {
-      margin-bottom: 25px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger Clone - Create Your Blog</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ff5722;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .nav-links .sign-in {
+            color: #ff5722;
+            border: 1px solid #ff5722;
+        }
+        
+        .nav-links .sign-in:hover {
+            background-color: #ffebe6;
+        }
+        
+        .nav-links .create-blog {
+            background-color: #ff5722;
+            color: white;
+        }
+        
+        .nav-links .create-blog:hover {
+            background-color: #e64a19;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #ff5722;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: #ff5722;
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Blog Creation Form */
+        .blog-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            display: none;
+        }
+        
+        .blog-form h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #ff5722;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .btn-cancel {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .btn-submit {
+            background-color: #ff5722;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            background-color: #e64a19;
+        }
+        
+        /* Blogs Grid */
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 20px;
+        }
+        
+        .blog-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .blog-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .blog-card .author {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .blog-card .author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .blog-card .author span {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ff5722;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff5722;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png" alt="Blogger Logo">
+                <h1>Blogger</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="sign-in">Sign In</a></li>
+                <li><a href="#" id="create-blog-btn" class="create-blog">Create Blog</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h2>Publish your passions, your way</h2>
+        <p>Create a unique and beautiful blog. It's easy and free.</p>
+        <div class="hero-buttons">
+            <a href="#" id="create-blog-hero-btn" class="btn btn-primary">Create your blog</a>
+            <a href="#" class="btn btn-secondary">Learn more</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <h2 class="section-title">Recent Blogs</h2>
+        <div class="blogs-grid" id="blogs-container">
+            <!-- Blogs will be dynamically inserted here -->
+        </div>
+    </div>
+    
+    <!-- Blog Creation Form in Modal -->
+    <div class="modal" id="blog-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="blog-form">
+                <h3>Create a New Blog</h3>
+                <form id="blog-form">
+                    <div class="form-group">
+                        <label for="blog-title">Blog Title</label>
+                        <input type="text" id="blog-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-content">Blog Content</label>
+                        <textarea id="blog-content" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-category">Category</label>
+                        <select id="blog-category">
+                            <option value="personal">Personal</option>
+                            <option value="technology">Technology</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="fashion">Fashion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-image">Featured Image URL</label>
+                        <input type="text" id="blog-image" placeholder="Paste image URL here">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel" id="cancel-blog">Cancel</button>
+                        <button type="submit" class="btn btn-submit">Publish Blog</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="#">Blog Creation</a></li>
+                    <li><a href="#">Custom Domains</a></li>
+                    <li><a href="#">Monetization</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Blogger Buzz</a></li>
+                    <li><a href="#">Help Forum</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Blogger API</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 Blogger Clone. This is a demo project not affiliated with Google or Blogger.
+        </div>
+    </footer>
 
-  <h1>👩‍⚖️ Zainab Tehreem | Justicewali</h1>
-  <p><strong>From:</strong> Pindi Gujaran, Punjab, Pakistan</p>
-  <p><strong>Lives in:</strong> Pindi Gheb</p>
-  <p><strong>School:</strong> British School of Oxford – Pindigheb Campus</p>
+    <script>
+        // Sample blog data
+        const sampleBlogs = [
+            {
+                id: 1,
+                title: "My Travel Adventures in Southeast Asia",
+                content: "Exploring the beautiful landscapes and cultures of Thailand, Vietnam, and Cambodia over three unforgettable months...",
+                category: "travel",
+                image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Sarah Johnson",
+                date: "May 15, 2023"
+            },
+            {
+                id: 2,
+                title: "The Future of Artificial Intelligence",
+                content: "How AI is transforming industries and what we can expect in the next decade of technological advancement...",
+                category: "technology",
+                image: "https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Michael Chen",
+                date: "June 2, 2023"
+            },
+            {
+                id: 3,
+                title: "Homemade Sourdough Bread Recipe",
+                content: "My journey to perfecting sourdough bread at home, with step-by-step instructions and troubleshooting tips...",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Emma Rodriguez",
+                date: "April 28, 2023"
+            }
+        ];
 
-  <div class="section">
-    <h2>🌟 About Me</h2>
-    <p>I’m a proud student of Rehan School Online Academy. I dream big, work hard, and stand for justice, fairness, and truth. I'm also a future gamer, music lover, and digital explorer.</p>
-  </div>
+        // DOM Elements
+        const blogsContainer = document.getElementById('blogs-container');
+        const createBlogBtn = document.getElementById('create-blog-btn');
+        const createBlogHeroBtn = document.getElementById('create-blog-hero-btn');
+        const blogModal = document.getElementById('blog-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const cancelBlog = document.getElementById('cancel-blog');
+        const blogForm = document.getElementById('blog-form');
 
-  <div class="section">
-    <h2>🎯 My Goals</h2>
-    <ul>
-      <li>Become a top gamer & game developer</li>
-      <li>Stand for truth and justice</li>
-      <li>Help the poor and become a billionaire philanthropist</li>
-      <li>Explore the world and learn AI</li>
-    </ul>
-  </div>
+        // Display sample blogs
+        function displayBlogs() {
+            blogsContainer.innerHTML = '';
+            const blogsToDisplay = [...sampleBlogs];
+            
+            blogsToDisplay.forEach(blog => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <img src="${blog.image}" alt="${blog.title}">
+                    <div class="blog-card-content">
+                        <h3>${blog.title}</h3>
+                        <p>${blog.content}</p>
+                        <div class="author">
+                            <img src="https://ui-avatars.com/api/?name=${blog.author.replace(' ', '+')}&background=random" alt="${blog.author}">
+                            <span>${blog.author} • ${blog.date}</span>
+                        </div>
+                    </div>
+                `;
+                blogsContainer.appendChild(blogCard);
+            });
+        }
 
-  <div class="section">
-    <h2>🎮 Hobbies & Passions</h2>
-    <ul>
-      <li>Gaming</li>
-      <li>Music</li>
-      <li>Learning AI & digital skills</li>
-      <li>Travelling</li>
-      <li>Helping others</li>
-    </ul>
-  </div>
+        // Open modal
+        function openModal() {
+            blogModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-  <div class="section">
-    <h2>📌 Contact</h2>
-    <p>Email: zain.abtehreem@example.com</p>
-    <p>Social Media: @zainab-tehreem-justicewali</p>
-  </div>
+        // Close modal
+        function closeModalFunc() {
+            blogModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            blogForm.reset();
+        }
 
-  <footer>
-    Copyright © 2025 Zainab Tehreem | Justicewali
-  </footer>
+        // Event Listeners
+        createBlogBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
 
+        createBlogHeroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+
+        closeModal.addEventListener('click', closeModalFunc);
+        cancelBlog.addEventListener('click', closeModalFunc);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === blogModal) {
+                closeModalFunc();
+            }
+        });
+
+        // Form submission
+        blogForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('blog-title').value;
+            const content = document.getElementById('blog-content').value;
+            const category = document.getElementById('blog-category').value;
+            const image = document.getElementById('blog-image').value || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+            
+            const newBlog = {
+                id: sampleBlogs.length + 1,
+                title,
+                content: content.length > 150 ? content.substring(0, 150) + '...' : content,
+                category,
+                image,
+                author: "You",
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            };
+            
+            sampleBlogs.unshift(newBlog);
+            displayBlogs();
+            closeModalFunc();
+            
+            alert('Your blog has been published successfully!');
+        });
+
+        // Initialize
+        displayBlogs();
+    </script>
 </body>
 </html>
