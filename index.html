@@ -3,512 +3,158 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blogger Clone - Create Your Blog</title>
+  <title>Blogger Clone - Orange Theme</title>
   <style>
     :root {
-      --primary-dark: #121212;
-      --secondary-dark: #1e1e1e;
-      --light-gray: #d3d3d3;
-      --gray: #888;
-      --white: #ffffff;
-      --highlight: #333;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --primary: #ff7a00;
+      --background: #fff8f2;
+      --text: #333;
+      --light: #fff3e0;
     }
 
     body {
-      background-color: var(--primary-dark);
-      color: var(--white);
-      line-height: 1.6;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
     }
 
     header {
-      background-color: var(--secondary-dark);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .logo h1 {
-      font-size: 24px;
-      color: var(--light-gray);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-    }
-
-    .nav-links li {
-      margin-left: 20px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--white);
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      background-color: var(--highlight);
-    }
-
-    .sign-in {
-      border: 1px solid var(--light-gray);
-    }
-
-    .create-blog {
-      background-color: var(--white);
-      color: var(--primary-dark);
-    }
-
-    .create-blog:hover {
-      background-color: var(--light-gray);
+      background-color: var(--primary);
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
     .hero {
-      background-color: var(--highlight);
       text-align: center;
-      padding: 60px 20px;
+      padding: 50px 20px;
+      background: var(--light);
     }
 
-    .hero h2 {
+    .hero h1 {
       font-size: 36px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .hero p {
       font-size: 18px;
-      margin-bottom: 30px;
-      color: var(--light-gray);
+      margin-bottom: 20px;
     }
 
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
+    .hero button {
+      background-color: var(--primary);
+      color: white;
       padding: 12px 24px;
       border: none;
-      border-radius: 4px;
+      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
+      border-radius: 5px;
     }
 
-    .btn-primary {
-      background-color: var(--white);
-      color: var(--primary-dark);
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .btn-primary:hover {
-      background-color: var(--light-gray);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      border: 1px solid var(--white);
-      color: var(--white);
-    }
-
-    .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--gray);
-      padding-bottom: 10px;
-    }
-
-    .blogs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .blog-card {
-      background-color: var(--secondary-dark);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      transition: 0.3s;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .blog-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .blog-card-content {
-      padding: 20px;
-    }
-
-    .blog-card h3 {
+    section h2 {
+      color: var(--primary);
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
-    .blog-card p {
-      color: var(--light-gray);
-      font-size: 14px;
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    .author {
-      display: flex;
-      align-items: center;
-      margin-top: 15px;
-      border-top: 1px solid var(--gray);
-      padding-top: 15px;
-    }
-
-    .author img {
-      border-radius: 50%;
-      height: 30px;
-      margin-right: 10px;
+    .feature-card {
+      background-color: white;
+      border: 2px solid var(--primary);
+      padding: 20px;
+      border-radius: 10px;
     }
 
     footer {
-      background-color: #000;
-      padding: 40px 20px;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-    }
-
-    .footer-column h3 {
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .footer-column ul {
-      list-style: none;
-    }
-
-    .footer-column ul li a {
-      color: var(--gray);
-      text-decoration: none;
-    }
-
-    .footer-column ul li a:hover {
-      color: var(--white);
-    }
-
-    .copyright {
+      background-color: var(--primary);
+      color: white;
       text-align: center;
-      margin-top: 30px;
-      color: var(--gray);
-      font-size: 14px;
+      padding: 20px;
+      margin-top: 40px;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background-color: var(--secondary-dark);
-      padding: 30px;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 600px;
-      max-height: 90vh;
-      overflow-y: auto;
+    footer a {
       color: white;
-    }
-
-    .close-modal {
-      float: right;
-      font-size: 28px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      background-color: var(--primary-dark);
-      border: 1px solid var(--gray);
-      color: white;
-      border-radius: 4px;
-    }
-
-    .form-actions {
-      margin-top: 20px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .btn-submit {
-      background-color: var(--white);
-      color: var(--primary-dark);
-    }
-
-    .btn-cancel {
-      background-color: var(--gray);
-      color: white;
-    }
-
-    .btn-cancel:hover {
-      background-color: var(--highlight);
+      margin: 0 10px;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-container">
-    <div class="logo">
-      <img src="https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png" alt="Blogger Logo">
-      <h1>Blogger</h1>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#" class="sign-in">Sign In</a></li>
-      <li><a href="#" id="create-blog-btn" class="create-blog">Create Blog</a></li>
-    </ul>
+  <header>
+    <h1>Create your blog</h1>
+  </header>
+
+  <div class="hero">
+    <h1>Publish your passions, your way</h1>
+    <p>Create a unique and beautiful blog easily.</p>
+    <button>Create your blog</button>
   </div>
-</header>
 
-<section class="hero">
-  <h2>Publish your passions, your way</h2>
-  <p>Create a unique and beautiful blog. It's easy and free.</p>
-  <div class="hero-buttons">
-    <a href="#" id="create-blog-hero-btn" class="btn btn-primary">Create your blog</a>
-    <a href="#" class="btn btn-secondary">Learn more</a>
-  </div>
-</section>
-
-<div class="container">
-  <h2 class="section-title">Recent Blogs</h2>
-  <div class="blogs-grid" id="blogs-container"></div>
-</div>
-
-<div class="modal" id="blog-modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <form id="blog-form">
-      <h3>Create a New Blog</h3>
-      <div class="form-group">
-        <label for="blog-title">Blog Title</label>
-        <input type="text" id="blog-title" required>
-      </div>
-      <div class="form-group">
-        <label for="blog-content">Blog Content</label>
-        <textarea id="blog-content" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="blog-category">Category</label>
-        <select id="blog-category">
-          <option value="personal">Personal</option>
-          <option value="technology">Technology</option>
-          <option value="travel">Travel</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="blog-image">Image URL</label>
-        <input type="text" id="blog-image" placeholder="Paste image URL">
-      </div>
-      <div class="form-actions">
-        <button type="button" class="btn btn-cancel" id="cancel-blog">Cancel</button>
-        <button type="submit" class="btn btn-submit">Publish</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>Features</h3>
-      <ul>
-        <li><a href="#">Blogging</a></li>
-        <li><a href="#">Themes</a></li>
-        <li><a href="#">Analytics</a></li>
-      </ul>
+  <section>
+    <h2>Choose the perfect design</h2>
+    <p>Create a beautiful blog that fits your style. Choose from a selection of easy-to-use templates – all with flexible layouts and hundreds of background images – or design something new.</p>
+    <div class="features">
+      <div class="feature-card">Vase • Cup • Slipper • Picture • Letter C • Letter B • Letter A • Ball</div>
+      <div class="feature-card">Family Blog • Drone • Phone • Thermostat • Remote • Smartwatch • Action Cam • Tech Blog</div>
+      <div class="feature-card">Spoon • Mixer • Eggs • Cherries • Rollover • Shape • Pie • Cooking Blog</div>
     </div>
-    <div class="footer-column">
-      <h3>Company</h3>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Careers</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>Support</h3>
-      <ul>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Community</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>Social</h3>
-      <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">YouTube</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="copyright">© 2025 Blogger Clone</div>
-</footer>
+  </section>
 
-<script>
-  const sampleBlogs = [
-    {
-      id: 1,
-      title: "Exploring Modern Web Design",
-      content: "Web design is evolving rapidly with dark themes, animation, and minimalism...",
-      category: "technology",
-      image: "https://source.unsplash.com/600x400/?web,design",
-      author: "Alex Doe",
-      date: "July 23, 2025"
-    },
-    {
-      id: 2,
-      title: "Why Remote Work is the Future",
-      content: "In this post, we explore how remote work is shaping productivity and work-life balance...",
-      category: "lifestyle",
-      image: "https://source.unsplash.com/600x400/?remote,work",
-      author: "Zainab Tehreem",
-      date: "July 22, 2025"
-    }
-  ];
+  <section>
+    <h2>Get a domain</h2>
+    <p>Give your blog the perfect home. Get a blogspot.com domain or buy a custom domain with just a few clicks.</p>
+  </section>
 
-  const blogsContainer = document.getElementById('blogs-container');
-  const blogModal = document.getElementById('blog-modal');
-  const blogForm = document.getElementById('blog-form');
-  const cancelBlog = document.getElementById('cancel-blog');
+  <section>
+    <h2>Earn money</h2>
+    <p>Get paid for your hard work. Google AdSense can automatically display relevant targeted ads on your blog so that you can earn income by posting about your passion.</p>
+  </section>
 
-  function displayBlogs() {
-    blogsContainer.innerHTML = '';
-    sampleBlogs.forEach(blog => {
-      blogsContainer.innerHTML += `
-        <div class="blog-card">
-          <img src="${blog.image}" alt="${blog.title}">
-          <div class="blog-card-content">
-            <h3>${blog.title}</h3>
-            <p>${blog.content}</p>
-            <div class="author">
-              <img src="https://ui-avatars.com/api/?name=${blog.author.replace(' ', '+')}" alt="${blog.author}">
-              <span>${blog.author} • ${blog.date}</span>
-            </div>
-          </div>
-        </div>`;
-    });
-  }
+  <section>
+    <h2>Know your audience</h2>
+    <p>Find out which posts are a hit with Blogger’s built-in analytics. You’ll see where your audience is coming from and what they’re interested in. You can even connect your blog directly to Google Analytics for a more detailed look.</p>
+  </section>
 
-  // Open modal
-  document.getElementById('create-blog-btn').onclick =
-  document.getElementById('create-blog-hero-btn').onclick = function (e) {
-    e.preventDefault();
-    blogModal.style.display = 'flex';
-  };
+  <section>
+    <h2>Hang onto your memories</h2>
+    <p>Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google.</p>
+  </section>
 
-  // Close modal
-  document.querySelector('.close-modal').onclick =
-  cancelBlog.onclick = function () {
-    blogModal.style.display = 'none';
-    blogForm.reset();
-  };
+  <section>
+    <h2>Join millions of others</h2>
+    <p>Whether sharing your expertise, breaking news, or whatever’s on your mind, you’re in good company on Blogger. Sign up to discover why millions of people have published their passions here.</p>
+    <button>Create your blog</button>
+  </section>
 
-  window.onclick = e => {
-    if (e.target === blogModal) {
-      blogModal.style.display = 'none';
-    }
-  };
+  <footer>
+    <p>
+      <a href="#">Help Center</a> | 
+      <a href="#">Help Forum</a> | 
+      <a href="#">Video Tutorials</a> | 
+      <a href="#">Blogger Buzz</a> | 
+      <a href="#">Developer Forum</a>
+    </p>
+    <p>
+      <a href="#">Terms of Service</a> | 
+      <a href="#">Privacy</a> | 
+      <a href="#">Content Policy</a>
+    </p>
+    <p>Language: English</p>
+  </footer>
 
-  // Form submission
-  blogForm.onsubmit = function (e) {
-    e.preventDefault();
-    const title = document.getElementById('blog-title').value;
-    const content = document.getElementById('blog-content').value;
-    const category = document.getElementById('blog-category').value;
-    const image = document.getElementById('blog-image').value || "https://source.unsplash.com/600x400/?blog";
-    const newBlog = {
-      id: sampleBlogs.length + 1,
-      title,
-      content: content.length > 150 ? content.slice(0, 150) + "..." : content,
-      category,
-      image,
-      author: "You",
-      date: new Date().toLocaleDateString()
-    };
-    sampleBlogs.unshift(newBlog);
-    displayBlogs();
-    blogModal.style.display = 'none';
-    alert("Your blog has been published!");
-  };
-
-  // Sign In / Learn More button alerts
-  document.querySelector('.sign-in').onclick = e => {
-    e.preventDefault();
-    alert('Redirecting to Sign In...');
-  };
-
-  document.querySelector('.btn-secondary').onclick = e => {
-    e.preventDefault();
-    alert('Learn more about how to start your own blog.');
-  };
-
-  displayBlogs();
-</script>
 </body>
 </html>
