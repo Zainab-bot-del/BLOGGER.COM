@@ -1,160 +1,876 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blogger Clone - Orange Theme</title>
-  <style>
-    :root {
-      --primary: #ff7a00;
-      --background: #fff8f2;
-      --text: #333;
-      --light: #fff3e0;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-    }
-
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background: var(--light);
-    }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .hero button {
-      background-color: var(--primary);
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    section h2 {
-      color: var(--primary);
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-card {
-      background-color: white;
-      border: 2px solid var(--primary);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    footer {
-      background-color: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger Clone - Dark Mode</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #333;
+        }
+        
+        .nav-links .sign-in {
+            color: #ffffff;
+            border: 1px solid #4a4a4a;
+            background-color: #2a2a2a;
+        }
+        
+        .nav-links .sign-in:hover {
+            background-color: #333;
+            border-color: #555;
+        }
+        
+        .nav-links .create-blog {
+            background-color: #4a4a4a;
+            color: white;
+        }
+        
+        .nav-links .create-blog:hover {
+            background-color: #5e5e5e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #b0b0b0;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background-color: #4a4a4a;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5e5e5e;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #b0b0b0;
+            border: 1px solid #4a4a4a;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.05);
+            color: white;
+            border-color: #666;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+            color: #ffffff;
+        }
+        
+        /* Blog Creation Form */
+        .blog-form {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        
+        .blog-form h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #b0b0b0;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .btn-cancel {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #333;
+        }
+        
+        .btn-submit {
+            background-color: #4a4a4a;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            background-color: #5e5e5e;
+        }
+        
+        /* Blogs Grid */
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .blog-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border-color: #444;
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+        
+        .blog-card-content {
+            padding: 20px;
+        }
+        
+        .blog-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .blog-card p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .blog-card .author {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+        
+        .blog-card .author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .blog-card .author span {
+            font-size: 13px;
+            color: #b0b0b0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #b0b0b0;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffffff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            border: 1px solid #333;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #b0b0b0;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #ffffff;
+        }
+        
+        /* Sign In Modal */
+        .signin-form {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+        
+        .signin-form h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+        }
+        
+        /* Learn More Page */
+        .learn-more-content {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        
+        .learn-more-content h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .learn-more-content p {
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>Create your blog</h1>
-  </header>
-
-  <div class="hero">
-    <h1>Publish your passions, your way</h1>
-    <p>Create a unique and beautiful blog easily.</p>
-    <button>Create your blog</button>
-  </div>
-
-  <section>
-    <h2>Choose the perfect design</h2>
-    <p>Create a beautiful blog that fits your style. Choose from a selection of easy-to-use templates – all with flexible layouts and hundreds of background images – or design something new.</p>
-    <div class="features">
-      <div class="feature-card">Vase • Cup • Slipper • Picture • Letter C • Letter B • Letter A • Ball</div>
-      <div class="feature-card">Family Blog • Drone • Phone • Thermostat • Remote • Smartwatch • Action Cam • Tech Blog</div>
-      <div class="feature-card">Spoon • Mixer • Eggs • Cherries • Rollover • Shape • Pie • Cooking Blog</div>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://www.gstatic.com/images/branding/product/1x/blogger_48dp.png" alt="Blogger Logo">
+                <h1>Blogger</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" id="sign-in-btn" class="sign-in">Sign In</a></li>
+                <li><a href="#" id="create-blog-btn" class="create-blog">Create Blog</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h2>Publish your passions, your way</h2>
+        <p>Create a unique and beautiful blog. It's easy and free.</p>
+        <div class="hero-buttons">
+            <a href="#" id="create-blog-hero-btn" class="btn btn-primary">Create your blog</a>
+            <a href="#" id="learn-more-btn" class="btn btn-secondary">Learn more</a>
+        </div>
+    </section>
+    
+    <div class="container" id="main-content">
+        <h2 class="section-title">Recent Blogs</h2>
+        <div class="blogs-grid" id="blogs-container">
+            <!-- Blogs will be dynamically inserted here -->
+        </div>
     </div>
-  </section>
+    
+    <!-- Blog Creation Modal -->
+    <div class="modal" id="blog-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="blog-form">
+                <h3>Create a New Blog</h3>
+                <form id="blog-form">
+                    <div class="form-group">
+                        <label for="blog-title">Blog Title</label>
+                        <input type="text" id="blog-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-content">Blog Content</label>
+                        <textarea id="blog-content" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-category">Category</label>
+                        <select id="blog-category">
+                            <option value="personal">Personal</option>
+                            <option value="technology">Technology</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="fashion">Fashion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-image">Featured Image URL</label>
+                        <input type="text" id="blog-image" placeholder="Paste image URL here">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel" id="cancel-blog">Cancel</button>
+                        <button type="submit" class="btn btn-submit">Publish Blog</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sign In Modal -->
+    <div class="modal" id="signin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="signin-form">
+                <h3>Sign In to Blogger</h3>
+                <form id="signin-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel" id="cancel-signin">Cancel</button>
+                        <button type="submit" class="btn btn-submit">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Learn More Content (hidden by default) -->
+    <div class="container" id="learn-more-content" style="display: none;">
+        <div class="learn-more-content">
+            <h2>About Our Blogging Platform</h2>
+            <p>Welcome to our modern blogging platform designed for creators who want to share their stories with the world. Our platform offers a clean, intuitive interface that makes blogging easy and enjoyable.</p>
+            
+            <h2 style="margin-top: 30px;">Key Features</h2>
+            <p><strong>Simple Publishing:</strong> Create and publish posts with just a few clicks. Our editor is designed to be intuitive and distraction-free.</p>
+            <p><strong>Beautiful Themes:</strong> Choose from a variety of professionally designed themes to make your blog stand out.</p>
+            <p><strong>Mobile Friendly:</strong> Your blog will look great on any device, from desktops to smartphones.</p>
+            <p><strong>Custom Domains:</strong> Use your own domain name to establish your unique brand identity.</p>
+            
+            <h2 style="margin-top: 30px;">Getting Started</h2>
+            <p>To begin your blogging journey, simply click the "Create Blog" button at the top of the page. You'll be guided through the setup process and can start publishing your first post in minutes.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="back-to-blogs-btn" class="btn btn-primary">Back to Blogs</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="#">Blog Creation</a></li>
+                    <li><a href="#">Custom Domains</a></li>
+                    <li><a href="#">Monetization</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Blogger Buzz</a></li>
+                    <li><a href="#">Help Forum</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Blogger API</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 Blogger Clone. This is a demo project not affiliated with Google or Blogger.
+        </div>
+    </footer>
 
-  <section>
-    <h2>Get a domain</h2>
-    <p>Give your blog the perfect home. Get a blogspot.com domain or buy a custom domain with just a few clicks.</p>
-  </section>
+    <script>
+        // Sample blog data with social media style images
+        const sampleBlogs = [
+            {
+                id: 1,
+                title: "My Weekend in the Mountains",
+                content: "Just got back from an amazing weekend hiking trip! The views were incredible and the fresh air was exactly what I needed... #nature #weekendvibes",
+                category: "personal",
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Alex Johnson",
+                authorImage: "https://randomuser.me/api/portraits/men/32.jpg",
+                date: "2 days ago",
+                likes: 124,
+                comments: 28
+            },
+            {
+                id: 2,
+                title: "New Coffee Shop Downtown",
+                content: "Discovered this amazing new coffee place with the best latte art I've ever seen! The barista is a true artist. Definitely my new favorite spot... #coffee #latteart",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Maria Garcia",
+                authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
+                date: "1 week ago",
+                likes: 89,
+                comments: 15
+            },
+            {
+                id: 3,
+                title: "Tech Conference Highlights",
+                content: "Attended the TechForward conference yesterday. So many inspiring talks about the future of AI and machine learning. Here are my key takeaways... #tech #conference",
+                category: "technology",
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "David Kim",
+                authorImage: "https://randomuser.me/api/portraits/men/22.jpg",
+                date: "3 days ago",
+                likes: 215,
+                comments: 42
+            },
+            {
+                id: 4,
+                title: "My New Fitness Routine",
+                content: "Started a new workout program and already seeing results after just 2 weeks! Sharing my routine and meal plan for anyone interested... #fitness #healthylifestyle",
+                category: "lifestyle",
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                author: "Sarah Wilson",
+                authorImage: "https://randomuser.me/api/portraits/women/63.jpg",
+                date: "5 days ago",
+                likes: 176,
+                comments: 31
+            }
+        ];
 
-  <section>
-    <h2>Earn money</h2>
-    <p>Get paid for your hard work. Google AdSense can automatically display relevant targeted ads on your blog so that you can earn income by posting about your passion.</p>
-  </section>
+        // DOM Elements
+        const blogsContainer = document.getElementById('blogs-container');
+        const createBlogBtn = document.getElementById('create-blog-btn');
+        const createBlogHeroBtn = document.getElementById('create-blog-hero-btn');
+        const signInBtn = document.getElementById('sign-in-btn');
+        const learnMoreBtn = document.getElementById('learn-more-btn');
+        const backToBlogsBtn = document.getElementById('back-to-blogs-btn');
+        const blogModal = document.getElementById('blog-modal');
+        const signinModal = document.getElementById('signin-modal');
+        const closeModals = document.querySelectorAll('.close-modal');
+        const cancelBlog = document.getElementById('cancel-blog');
+        const cancelSignin = document.getElementById('cancel-signin');
+        const blogForm = document.getElementById('blog-form');
+        const signinForm = document.getElementById('signin-form');
+        const mainContent = document.getElementById('main-content');
+        const learnMoreContent = document.getElementById('learn-more-content');
 
-  <section>
-    <h2>Know your audience</h2>
-    <p>Find out which posts are a hit with Blogger’s built-in analytics. You’ll see where your audience is coming from and what they’re interested in. You can even connect your blog directly to Google Analytics for a more detailed look.</p>
-  </section>
+        // Display sample blogs
+        function displayBlogs() {
+            blogsContainer.innerHTML = '';
+            const blogsToDisplay = [...sampleBlogs];
+            
+            blogsToDisplay.forEach(blog => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <img src="${blog.image}" alt="${blog.title}">
+                    <div class="blog-card-content">
+                        <h3>${blog.title}</h3>
+                        <p>${blog.content}</p>
+                        <div class="author">
+                            <img src="${blog.authorImage}" alt="${blog.author}">
+                            <span>${blog.author} • ${blog.date} • ${blog.likes} likes • ${blog.comments} comments</span>
+                        </div>
+                    </div>
+                `;
+                blogsContainer.appendChild(blogCard);
+            });
+        }
 
-  <section>
-    <h2>Hang onto your memories</h2>
-    <p>Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google.</p>
-  </section>
+        // Open modal
+        function openModal(modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-  <section>
-    <h2>Join millions of others</h2>
-    <p>Whether sharing your expertise, breaking news, or whatever’s on your mind, you’re in good company on Blogger. Sign up to discover why millions of people have published their passions here.</p>
-    <button>Create your blog</button>
-  </section>
+        // Close modal
+        function closeModalFunc(modal) {
+            if (modal) {
+                modal.style.display = 'none';
+            } else {
+                // Close all modals
+                document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+            }
+            document.body.style.overflow = 'auto';
+            
+            // Reset forms
+            if (blogForm) blogForm.reset();
+            if (signinForm) signinForm.reset();
+        }
 
-  <footer>
-    <p>
-      <a href="#">Help Center</a> | 
-      <a href="#">Help Forum</a> | 
-      <a href="#">Video Tutorials</a> | 
-      <a href="#">Blogger Buzz</a> | 
-      <a href="#">Developer Forum</a>
-    </p>
-    <p>
-      <a href="#">Terms of Service</a> | 
-      <a href="#">Privacy</a> | 
-      <a href="#">Content Policy</a>
-    </p>
-    <p>Language: English</p>
-  </footer>
+        // Show learn more content
+        function showLearnMore() {
+            mainContent.style.display = 'none';
+            learnMoreContent.style.display = 'block';
+        }
 
+        // Show main content
+        function showMainContent() {
+            mainContent.style.display = 'block';
+            learnMoreContent.style.display = 'none';
+        }
+
+        // Event Listeners
+        createBlogBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(blogModal);
+        });
+
+        createBlogHeroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(blogModal);
+        });
+
+        signInBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(signinModal);
+        });
+
+        learnMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLearnMore();
+        });
+
+        backToBlogsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showMainContent();
+        });
+
+        // Close modals when clicking X
+        closeModals.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                const modal = closeBtn.closest('.modal');
+                closeModalFunc(modal);
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModalFunc(e.target);
+            }
+        });
+
+        // Cancel buttons
+        if (cancelBlog) {
+            cancelBlog.addEventListener('click', () => closeModalFunc(blogModal));
+        }
+        
+        if (cancelSignin) {
+            cancelSignin.addEventListener('click', () => closeModalFunc(signinModal));
+        }
+
+        // Form submission - Blog Creation
+        if (blogForm) {
+            blogForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const title = document.getElementById('blog-title').value;
+                const content = document.getElementById('blog-content').value;
+                const category = document.getElementById('blog-category').value;
+                const image = document.getElementById('blog-image').value || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+                
+                const newBlog = {
+                    id: sampleBlogs.length + 1,
+                    title,
+                    content: content.length > 150 ? content.substring(0, 150) + '...' : content,
+                    category,
+                    image,
+                    author: "You",
+                    authorImage: "https://ui-avatars.com/api/?name=You&background=random",
+                    date: "Just now",
+                    likes: 0,
+                    comments: 0
+                };
+                
+                sampleBlogs.unshift(newBlog);
+                displayBlogs();
+                closeModalFunc(blogModal);
+                
+                alert('Your blog has been published successfully!');
+            });
+        }
+
+        // Form submission - Sign In
+        if (signinForm) {
+            signinForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (email && password) {
+                    closeModalFunc(signinModal);
+                    alert('Welcome back! You are now signed in.');
+                    signInBtn.textContent = "My Account";
+                } else {
+                    alert('Please enter both email and password');
+                }
+            });
+        }
+
+        // Initialize
+        displayBlogs();
+    </script>
 </body>
 </html>
